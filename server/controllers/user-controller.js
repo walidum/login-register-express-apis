@@ -15,13 +15,13 @@ module.exports.LOGIN = async (req, res) => {
     return res.send({status: true, user: user})
 }
 
-module.exports.ListUser = (req, res) => {
+module.exports.ALL = (req, res) => {
     User.find()
         .then(users => res.send(users))
         .catch(err => res.send([]))
 }
 
-module.exports.AddUser = (req, res) => {
+module.exports.REGISTER = (req, res) => {
     console.log(req.body)
     const user = new User()
     user.firstname = req.body.firstName
@@ -33,7 +33,7 @@ module.exports.AddUser = (req, res) => {
         .then(r => res.send('OK'))
         .catch(err => res.send('Not OK'))
 }
-module.exports.DeleteUser = (req, res) => {
+module.exports.DELETE = (req, res) => {
     User.remove({
         '_id': req.body.id
     }).then(r => res.send('OK'))
