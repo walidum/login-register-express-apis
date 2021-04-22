@@ -10,7 +10,9 @@ module.exports.LOGIN = async (req, res) => {
     if (!email) return res.send({status: false, msg: 'Email invalid'});
     const user = await User.findOne({email: email}).exec();
     if (!user) return res.send({status: false, msg: 'Email invalid'});
-    const match = await bycrypt.compare(password, user.password)
+    console.log(user)
+    console.log(user.password)
+    const match = await bycrypt.compareSync(password, user.password)
     if (!match) return res.send({status: false, msg: 'Password invalid'});
     const payload = {user: {id: user._id}};
     jwt.sign(payload, "angualar", {expiresIn: 10000}, (err, token) => {
