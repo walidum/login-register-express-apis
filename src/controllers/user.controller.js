@@ -23,15 +23,10 @@ module.exports.ALL = (req, res) => {
 
 module.exports.REGISTER = (req, res) => {
     console.log(req.body)
-    const user = new User()
-    user.firstname = req.body.firstName
-    user.lastname = req.body.lastName
-    user.email = req.body.email
-    user.password = req.body.password
-    user.category = req.body.category
+    const user = new User(req.body)
     user.save()
-        .then(r => res.send('OK'))
-        .catch(err => res.send('Not OK'))
+        .then(r => res.send({error:false, msg: 'User successfully created !'}))
+        .catch(err => res.send({error:true, msg: '500 error !'}))
 }
 module.exports.DELETE = (req, res) => {
     User.remove({
