@@ -1,9 +1,9 @@
 const express = require('express');
 const bodyParser = require("body-parser");
-const db = require('./server/config/mongoose')
+const db = require('./src/config/mongoose')
 const cors = require('cors')
 const path = require('path')
-const api = require('./server/routes/api')
+const api = require('./src/routes/api')
 const app = express();
 app.use(cors());
 app.options('*', cors());

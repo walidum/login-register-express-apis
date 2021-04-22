@@ -1,5 +1,5 @@
 const express = require('express')
-const {DELETE,ALL,REGISTER, LOGIN} = require("../controllers/user-controller");
+const {DELETE,ALL,REGISTER, LOGIN} = require("../controllers/user.controller");
 const router = express.Router();
 
 router.post('/login', LOGIN)
